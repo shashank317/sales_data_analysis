@@ -1,2 +1,23 @@
 # Step_by_step
-    
+# Data Cleaning 
+1. we will be using any sample dataset(CSV or Exel)
+
+# Data cleaning and Prepration
+ #hear we will bw using panda and  Exel 
+1. lets first fic the dataTypes 
+2. Lets handle some missing values
+
+# Data Storage
+1. after the data cleaning is done lets store it in a exel file
+2. pandas acn also be used for processing
+
+# Tools required 
+1. PowerBI or Tablue (i will go with powerBI )
+2. connecting the cleaned data
+3. build visuals
+
+
+
+
+
+
