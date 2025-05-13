@@ -17,7 +17,16 @@
 3. build visuals
 
 
-
-
+# now
+creating a file "xyz.py" to keep the clean data set
+here we use pandas lib
+now importing pandas as pd
+. now first read the file
+. print every possible values available in dataset
+. here are some "df.head()" prints the 5 rows in the table 
+  "df.shape" prints the shape of the dataframe 
+  "df.column" prints the column present in the data
+  "df.dtypes" it gives the data types of the column
+  "df.isnull()
 
 
