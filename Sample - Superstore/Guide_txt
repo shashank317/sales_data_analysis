@@ -27,6 +27,18 @@ now importing pandas as pd
   "df.shape" prints the shape of the dataframe 
   "df.column" prints the column present in the data
   "df.dtypes" it gives the data types of the column
-  "df.isnull()
+  "df.isnull() it give the total null values
+  
+  After data is loded 
+
+# now data Cleaning
+. converting the date" which is in string to real date time  " pd.to_datetime" 
+ this converts "1/01/20016" to 2020-10-03 00:00:00
+ . no lets add asome new column SYNTAX = df["new column"] <- this adds the new colunm
+  
+
+
+
+
 
 
