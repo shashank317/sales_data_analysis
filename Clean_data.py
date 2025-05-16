@@ -21,9 +21,73 @@ df = df.drop_duplicates() # remove duplicates
 print("\nAfter removing duplicates, the shape of the dataframe is:", df.shape) # prints the shape of the dataframe after removing duplicates
 #df = df.dropna() # remove missing values
 
-df["Renuve after discount"] = df["sales"] *(1 - df["Discount"])
-df["Order Month "]= df["Order Date"].df.to_period("M")
-df["Shipping Time"] = (df("Ship Date") - df["Order Date"]).dt.days
+df["Renuve after discount"] = df["Sales"] *(1 - df["Discount"])
+df["Order Month "]= df["Order Date"].dt.to_period("M")
+df["Shipping Time"] = (df["Ship Date"] - df["Order Date"]).dt.days
 df["Profit Margin (%)"] = (df["Profit"] / df["Sales"]) * 100
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+# Set the style of seaborn
+plt.figure(figsize=(12,6))
+# 1. Top 10 Cities by Sales
+top_cities = df.groupby("City")["Sales"].sum().sort_values(ascending=False).head(10)
+top_cities.plot(kind='bar', color='skyblue')
+plt.title("Top 10 Cities by Total Sales")
+plt.xlabel("City")
+plt.ylabel("Total Sales")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# 2. Sales vs Profit Scatter Plot
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=df, x="Sales", y="Profit", hue="Category")
+plt.title("Sales vs Profit by Category")
+plt.xlabel("Sales")
+plt.ylabel("Profit")
+plt.tight_layout()
+plt.show()
+
+# 3. Average Shipping Time per Ship Mode
+avg_ship_time = df.groupby("Ship Mode")["Shipping Time (Days)"].mean()
+avg_ship_time.plot(kind="bar", color="orange")
+plt.title("Average Shipping Time by Shipping Mode")
+plt.xlabel("Shipping Mode")
+plt.ylabel("Avg Days to Ship")
+plt.tight_layout()
+plt.show()
+
+# 4. Profit by Category
+plt.figure(figsize=(8, 5))
+sns.barplot(data=df, x="Category", y="Profit", estimator=sum)
+plt.title("Total Profit by Category")
+plt.ylabel("Total Profit")
+plt.tight_layout()
+plt.show()
+
+import matplotlib.pyplot as plt
+
+# 1. Group by Customer Name and sum the Sales
+top_customers = df.groupby("Customer Name")["Sales"].sum()
+
+# 2. Sort the customers by Sales in descending order
+top_customers = top_customers.sort_values(ascending=False)
+
+# 3. Select the Top 10 customers
+top_10_customers = top_customers.head(10)
+
+# 4. Plotting
+plt.figure(figsize=(12,6))
+top_10_customers.plot(kind='bar', color='skyblue')
+
+plt.title("Top 10 Customers by Sales", fontsize=16)
+plt.xlabel("Customer Name", fontsize=12)
+plt.ylabel("Total Sales", fontsize=12)
+plt.xticks(rotation=45, ha='right')  # rotate labels for better readability
+plt.tight_layout()
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.show()
 
 
