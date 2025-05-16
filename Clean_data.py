@@ -126,3 +126,33 @@ plt.ylabel("Total Sales")
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
 plt.show()
+# 7. Monthly Profit Trend
+monthly_profit = df.groupby("Order Month ")["Profit"].sum()
+
+plt.figure(figsize=(12, 6))
+monthly_profit.plot(kind="line", marker='o', color='purple')
+plt.title("Monthly Profit Trend")
+plt.xlabel("Order Month")
+plt.ylabel("Total Profit")
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
+
+
+# Grouping by Category and summing Sales & Profit
+category_summary = df.groupby("Category")[["Sales", "Profit"]].sum().sort_values(by="Sales", ascending=False)
+
+# Plotting
+plt.figure(figsize=(10,6))
+category_summary.plot(kind='bar', color=['skyblue', 'lightgreen'])
+
+plt.title("Sales and Profit by Category", fontsize=14)
+plt.xlabel("Category", fontsize=12)
+plt.ylabel("Amount", fontsize=12)
+plt.xticks(rotation=0)
+plt.grid(axis='y', linestyle='--', alpha=0.6)
+plt.tight_layout()
+plt.show()
+
+# save the cleaned data to a new CSV file
+df.to_csv("cleaned_sales_data.csv", index=False)
