@@ -50,7 +50,7 @@ plt.tight_layout()
 plt.show()
 
 # 3. Average Shipping Time per Ship Mode
-avg_ship_time = df.groupby("Ship Mode")["Shipping Time (Days)"].mean()
+avg_ship_time = df.groupby("Ship Mode")["Shipping Time"].mean()
 avg_ship_time.plot(kind="bar", color="orange")
 plt.title("Average Shipping Time by Shipping Mode")
 plt.xlabel("Shipping Mode")
@@ -91,3 +91,38 @@ plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.show()
 
 
+# Group sales by month
+monthly_sales = df.groupby(df["Order Date"].dt.to_period("M"))["Sales"].sum()
+
+# Plotting
+monthly_sales.plot(kind='line', figsize=(12,6), marker='o', color='green')
+plt.title("Monthly Sales Trend")
+plt.xlabel("Order Month")
+plt.ylabel("Total Sales")
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+# Group by Month and Category
+category_monthly_sales = df.groupby([df["Order Date"].dt.to_period("M"), "Category"])["Sales"].sum().unstack()
+
+# Plot
+category_monthly_sales.plot(figsize=(12,6), marker='o')
+plt.title("Monthly Sales by Category")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+# 6. Monthly Sales Trend
+monthly_sales = df.groupby("Order Month ")["Sales"].sum()
+
+plt.figure(figsize=(12, 6))
+monthly_sales.plot(kind="line", marker='o', color='green')
+plt.title("Monthly Sales Trend")
+plt.xlabel("Order Month")
+plt.ylabel("Total Sales")
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
