@@ -154,5 +154,8 @@ plt.grid(axis='y', linestyle='--', alpha=0.6)
 plt.tight_layout()
 plt.show()
 
-# save the cleaned data to a new CSV file
+# s
 df.to_csv("cleaned_sales_data.csv", index=False)
+top_cities.to_csv("top_cities_sales.csv")
+monthly_sales.to_csv("monthly_sales.csv")
+category_summary.to_csv("sales_profit_by_category.csv")
